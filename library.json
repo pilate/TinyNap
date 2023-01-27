@@ -1,0 +1,25 @@
+{
+  "name": "TinyNap",
+  "version": "0.0.1",
+  "description": "Simple sleep library for ATtiny25/45/85",
+  "keywords": [
+    "sleep",
+    "attiny",
+    "attiny25",
+    "attiny45",
+    "attiny85"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pilate/TinyNap.git"
+  },
+  "authors": {
+    "name": "Pilate",
+    "email": "noptical@gmail.com"
+  },
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": [
+    "atmelavr"
+  ]
+}
