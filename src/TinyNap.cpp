@@ -25,7 +25,7 @@ void tn_wdt_setup(uint8_t wdp)
 
 void nap(uint32_t nap_time)
 {
-  int i;
+  uint16_t i;
   uint8_t s;
 
   // cli();
