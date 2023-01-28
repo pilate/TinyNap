@@ -30,6 +30,8 @@ void nap(uint32_t nap_time)
 
   // Save ADC state
   uint8_t old_adcsra = ADCSRA;
+
+  // Turn off ADC
   ADCSRA = 0;
 
   sleep_enable();
