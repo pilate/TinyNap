@@ -35,8 +35,8 @@ void nap(uint32_t nap_time)
 
   // cli();
 
-  // Save ADC power config
-  uint8_t prev_sra = ADCSRA;
+  // Save ADC state
+  uint8_t old_adcsra = ADCSRA;
   ADCSRA = 0;
 
   sleep_enable();
@@ -55,9 +55,8 @@ void nap(uint32_t nap_time)
 
   sleep_disable();
 
-  // Restore ADC power config
-  ADCSRA = prev_sra;
-
+  // Restore ADC state
+  ADCSRA = old_adcsra;
 }
 
 ISR(WDT_vect)
