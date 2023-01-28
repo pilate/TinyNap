@@ -1,5 +1,4 @@
 #include "TinyNap.h"
-
 #include <avr/sleep.h>
 #include <avr/wdt.h>
 
@@ -10,12 +9,8 @@
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 #endif
 
-
-void watchdog_setup(uint8_t wdp)
+void tn_wdt_setup(uint8_t wdp)
 {
-  // reset status register
-  MCUSR = 0;
-
   // WDP3 is 6th bit? cool
   if (wdp & 0b00001000)
   {
@@ -46,7 +41,7 @@ void nap(uint32_t nap_time)
   {
     while (nap_time > i)
     {
-      watchdog_setup(s);
+      tn_wdt_setup(s);
       // sei();
       sleep_cpu();
       nap_time -= i;
