@@ -55,12 +55,6 @@ void nap(uint32_t nap_time)
 
   sleep_disable();
 
-  // delay for any time less than 16ms
-  if (nap_time)
-  {
-    delay(nap_time);
-  }
-
   // Restore ADC power config
   ADCSRA = prev_sra;
 
