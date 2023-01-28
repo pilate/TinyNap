@@ -28,8 +28,6 @@ void nap(uint32_t nap_time)
   uint16_t i;
   uint8_t s;
 
-  // cli();
-
   // Save ADC state
   uint8_t old_adcsra = ADCSRA;
   ADCSRA = 0;
@@ -42,7 +40,7 @@ void nap(uint32_t nap_time)
     while (nap_time > i)
     {
       tn_wdt_setup(s);
-      // sei();
+      sei();
       sleep_cpu();
       nap_time -= i;
     }
