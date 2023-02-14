@@ -25,8 +25,8 @@ void tn_wdt_setup(uint8_t wdp)
 
 void nap(uint32_t nap_time)
 {
-  uint16_t i;
-  uint8_t s;
+  uint16_t timeout;
+  uint8_t wdp;
 
   // Save ADC state
   uint8_t old_adcsra = ADCSRA;
@@ -37,14 +37,14 @@ void nap(uint32_t nap_time)
   sleep_enable();
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
 
-  for (i = 8192, s = 9; i >= 16; i /= 2, s--)
+  for (timeout = 8192, wdp = 9; timeout >= 16; timeout /= 2, wdp--)
   {
-    while (nap_time > i)
+    while (nap_time >= timeout)
     {
-      tn_wdt_setup(s);
+      tn_wdt_setup(wdp);
       sei();
       sleep_cpu();
-      nap_time -= i;
+      nap_time -= timeout;
     }
   }
 
